@@ -1,0 +1,6 @@
+BACKEND
+npm install express passport passport-google-oauth20 jsonwebtoken bcryptjs mongoose cors dotenv
+npm install --save-dev @types/express @types/passport @types/jsonwebtoken @types/bcryptjs
+
+FRONTEND
+npm install react-router-dom axios
