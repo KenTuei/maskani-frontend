@@ -121,8 +121,9 @@ const Home = () => {
         onClose={() => setModal(null)}
         onSwitchToLogin={() => setModal("login")}
       />
+
 {/* ================= HERO SLIDER ================= */}
-<section className="relative h-[600px] w-full group">
+<section className="relative h-[520px] md:h-[600px] w-full group">
   <Swiper
     modules={[Navigation, Pagination, Autoplay, EffectFade]}
     effect="fade"
@@ -137,15 +138,15 @@ const Home = () => {
           className="relative h-full w-full bg-cover bg-center flex items-center"
           style={{ backgroundImage: `url('${slide.image}')` }}
         >
-          <div className="absolute inset-0 bg-black/40" />
+          <div className="absolute inset-0 bg-black/50" />
 
-          <div className="relative max-w-7xl mx-auto px-6 w-full text-white">
-            <div className="max-w-2xl space-y-6">
-              <h1 className="text-5xl md:text-7xl font-black leading-tight uppercase tracking-tighter">
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 w-full text-white">
+            <div className="max-w-2xl space-y-4 md:space-y-6">
+              <h1 className="text-3xl sm:text-4xl md:text-6xl font-black leading-tight uppercase tracking-tighter">
                 {slide.title}
               </h1>
 
-              <p className="text-xl font-medium text-gray-200">
+              <p className="text-base sm:text-lg md:text-xl font-medium text-gray-200">
                 {slide.subtitle}
               </p>
             </div>
@@ -155,116 +156,133 @@ const Home = () => {
     ))}
   </Swiper>
 
-  {/* Fixed CTA Buttons */}
-  <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-20 flex flex-wrap justify-center gap-4 px-4">
-    {isLoggedIn ? (
-      <>
-        <button
-          onClick={() => navigate("/properties")}
-          className="bg-[#FF8C00] hover:bg-orange-600 text-white px-10 py-4 rounded-full font-black transition-all shadow-xl uppercase text-sm tracking-widest"
-        >
-          Browse Marketplace
-        </button>
+  {/* ================= CTA BUTTONS ================= */}
+  <div className="absolute bottom-6 md:bottom-24 left-1/2 -translate-x-1/2 z-20 w-full px-4">
+    <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
+      
+      {isLoggedIn ? (
+        <>
+          <button
+            onClick={() => navigate("/properties")}
+            className="w-full sm:w-auto bg-[#FF8C00] hover:bg-orange-600 text-white px-6 sm:px-10 py-3 sm:py-4 rounded-full font-black transition-all shadow-xl uppercase text-xs sm:text-sm tracking-widest"
+          >
+            Browse Marketplace
+          </button>
 
-        <button
-          onClick={() =>
-            navigate(
-              userRole === "leaser"
-                ? "/realtor-dash"
-                : "/hunter-dash"
-            )
-          }
-          className="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-full font-black transition-all shadow-xl uppercase text-sm tracking-widest"
-        >
-          Go To Dashboard
-        </button>
-      </>
-    ) : (
-      <>
-        <button
-          onClick={() => openSignup("hunter")}
-          className="bg-[#FF8C00] hover:bg-orange-600 text-white px-10 py-4 rounded-full font-black transition-all shadow-xl uppercase text-sm tracking-widest"
-        >
-          Register As Hunter
-        </button>
+          <button
+            onClick={() =>
+              navigate(
+                userRole === "leaser"
+                  ? "/realtor-dash"
+                  : "/hunter-dash"
+              )
+            }
+            className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-6 sm:px-10 py-3 sm:py-4 rounded-full font-black transition-all shadow-xl uppercase text-xs sm:text-sm tracking-widest"
+          >
+            Dashboard
+          </button>
+        </>
+      ) : (
+        <>
+          <button
+            onClick={() => openSignup("hunter")}
+            className="w-full sm:w-auto bg-white/10 backdrop-blur border border-white/30 hover:bg-white/20 text-white px-6 sm:px-10 py-3 sm:py-4 rounded-full font-black transition-all shadow-xl uppercase text-xs sm:text-sm tracking-widest"
+          >
+            Register As Hunter
+          </button>
 
-        <button
-          onClick={() => openSignup("realtor")}
-          className="bg-[#FF8C00] hover:bg-orange-600 text-white px-10 py-4 rounded-full font-black transition-all shadow-xl uppercase text-sm tracking-widest"
-        >
-          Register As Realtor
-        </button>
-      </>
-    )}
+          <button
+            onClick={() => openSignup("realtor")}
+            className="w-full sm:w-auto bg-white/10 backdrop-blur border border-white/30 hover:bg-white/20 text-white px-6 sm:px-10 py-3 sm:py-4 rounded-full font-black transition-all shadow-xl uppercase text-xs sm:text-sm tracking-widest"
+          >
+            Register As Realtor
+          </button>
+        </>
+      )}
+
+    </div>
   </div>
 </section>
-      {/* ================= HELPING YOU FIND SECTION ================= */}
-      <section className="max-w-7xl mx-auto px-6 py-24">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-4">
-              <img
-                src="/garden-city.jpg"
-                className="rounded-3xl h-64 w-full object-cover shadow-lg"
-                alt="img1"
-              />
-              <img
-                src="/modern-country-houses-construction.jpg"
-                className="rounded-3xl h-80 w-full object-cover shadow-lg"
-                alt="img2"
-              />
-            </div>
-            <div className="pt-12 space-y-4">
-              <img
-                src="/aerial-view-new-houses-bridgwater-somerset-uk.jpg"
-                className="rounded-3xl h-80 w-full object-cover shadow-lg"
-                alt="img3"
-              />
-              <img
-                src="/Tatu city 1.jpeg"
-                className="rounded-3xl h-64 w-full object-cover shadow-lg"
-                alt="img4"
-              />
-            </div>
-          </div>
 
-          <div className="space-y-8">
-            <div className="space-y-2">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-[2px] bg-slate-900" />
-                <span className="text-sm font-black uppercase tracking-widest text-blue-600">
-                  Reliable Connections
-                </span>
-              </div>
-              <h2 className="text-5xl md:text-6xl font-black text-slate-900 leading-[1.1] tracking-tighter">
-                Helping You Find <br />
-                <span className="text-blue-600">Trusted Homes</span> Nearby
-              </h2>
-            </div>
-            <p className="text-lg text-gray-600 font-medium leading-relaxed">
-              Maskani Homes is a reliable platform connecting hunters with
-              verified owners. We make it easy to discover your next stay
-              through practical, trusted connections.
-            </p>
-            {!isLoggedIn && (
-              <div className="flex flex-wrap gap-4 pt-4">
-                <button
-                  onClick={() => openSignup("hunter")}
-                  className="bg-[#0a192f] text-white px-8 py-4 rounded-2xl font-black hover:bg-slate-800 transition-all"
-                >
-                  Register as Hunter
-                </button>
-                <a
-                  href="mailto:management@maskani.co.ke"
-                  className="bg-blue-600 text-white px-8 py-4 rounded-2xl font-black shadow-lg hover:bg-blue-700 transition-all no-underline flex items-center gap-2"
-                >
-                  ✉ Email Agent
-                </a>
-              </div>
-            )}
-          </div>
+{/* ================= HELPING YOU FIND SECTION ================= */}
+<section className="max-w-7xl mx-auto px-6 py-24">
+  <div className="grid lg:grid-cols-2 gap-16 items-center">
+
+    {/* Images */}
+    <div className="grid grid-cols-2 gap-4">
+      <div className="space-y-4">
+        <img
+          src="/garden-city.jpg"
+          className="rounded-3xl h-64 w-full object-cover shadow-lg"
+          alt="img1"
+        />
+        <img
+          src="/modern-country-houses-construction.jpg"
+          className="rounded-3xl h-80 w-full object-cover shadow-lg"
+          alt="img2"
+        />
+      </div>
+
+      <div className="pt-12 space-y-4">
+        <img
+          src="/aerial-view-new-houses-bridgwater-somerset-uk.jpg"
+          className="rounded-3xl h-80 w-full object-cover shadow-lg"
+          alt="img3"
+        />
+        <img
+          src="/Tatu city 1.jpeg"
+          className="rounded-3xl h-64 w-full object-cover shadow-lg"
+          alt="img4"
+        />
+      </div>
+    </div>
+
+    {/* Text Content */}
+    <div className="space-y-8">
+
+      <div className="space-y-2">
+        <div className="flex items-center gap-3">
+          <div className="w-12 h-[2px] bg-orange-500" />
+          <span className="text-sm font-black uppercase tracking-widest text-orange-500">
+            Reliable Connections
+          </span>
         </div>
-      </section>
+
+        <h2 className="text-5xl md:text-6xl font-black text-slate-900 leading-[1.1] tracking-tighter">
+          Helping You Find <br />
+          <span className="text-orange-500">Trusted Homes</span> Nearby
+        </h2>
+      </div>
+
+      <p className="text-lg text-gray-600 font-medium leading-relaxed">
+        Maskani Homes is a reliable platform connecting hunters with
+        verified owners. We make it easy to discover your next stay
+        through practical, trusted connections.
+      </p>
+
+      {/* CTA Buttons */}
+      {!isLoggedIn && (
+        <div className="flex flex-wrap gap-4 pt-4">
+
+          <button
+            onClick={() => openSignup("hunter")}
+            className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-2xl font-black transition-all shadow-lg"
+          >
+            Register as Hunter
+          </button>
+
+          <a
+            href="mailto:management@maskani.co.ke"
+            className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-2xl font-black shadow-lg transition-all no-underline flex items-center gap-2"
+          >
+            ✉ Email Agent
+          </a>
+
+        </div>
+      )}
+    </div>
+  </div>
+</section>
 
       {/* ================= DYNAMIC FEATURED PROPERTY SECTION ================= */}
       {featuredListings.length > 0 && (
