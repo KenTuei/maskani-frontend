@@ -121,46 +121,83 @@ const Home = () => {
         onClose={() => setModal(null)}
         onSwitchToLogin={() => setModal("login")}
       />
-
-      {/* ================= HERO SLIDER ================= */}
-      <section className="relative h-[600px] w-full group">
-        <Swiper
-          modules={[Navigation, Pagination, Autoplay, EffectFade]}
-          effect="fade"
-          autoplay={{ delay: 5000 }}
-          pagination={{ clickable: true }}
-          loop={true}
-          className="h-full w-full"
+{/* ================= HERO SLIDER ================= */}
+<section className="relative h-[600px] w-full group">
+  <Swiper
+    modules={[Navigation, Pagination, Autoplay, EffectFade]}
+    effect="fade"
+    autoplay={{ delay: 5000 }}
+    pagination={{ clickable: true }}
+    loop={true}
+    className="h-full w-full"
+  >
+    {slides.map((slide, index) => (
+      <SwiperSlide key={index}>
+        <div
+          className="relative h-full w-full bg-cover bg-center flex items-center"
+          style={{ backgroundImage: `url('${slide.image}')` }}
         >
-          {slides.map((slide, index) => (
-            <SwiperSlide key={index}>
-              <div
-                className="relative h-full w-full bg-cover bg-center flex items-center"
-                style={{ backgroundImage: `url('${slide.image}')` }}
-              >
-                <div className="absolute inset-0 bg-black/40" />
-                <div className="relative max-w-7xl mx-auto px-6 w-full text-white text-center md:text-left">
-                  <div className="max-w-2xl space-y-6">
-                    <h1 className="text-5xl md:text-7xl font-black leading-tight uppercase tracking-tighter">
-                      {slide.title}
-                    </h1>
-                    <p className="text-xl font-medium text-gray-200">
-                      {slide.subtitle}
-                    </p>
-                    <button
-                      onClick={slide.action}
-                      className="bg-[#FF8C00] hover:bg-orange-600 text-white px-10 py-4 rounded-full font-black transition-all shadow-xl uppercase text-sm tracking-widest"
-                    >
-                      {slide.cta}
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </section>
+          <div className="absolute inset-0 bg-black/40" />
 
+          <div className="relative max-w-7xl mx-auto px-6 w-full text-white">
+            <div className="max-w-2xl space-y-6">
+              <h1 className="text-5xl md:text-7xl font-black leading-tight uppercase tracking-tighter">
+                {slide.title}
+              </h1>
+
+              <p className="text-xl font-medium text-gray-200">
+                {slide.subtitle}
+              </p>
+            </div>
+          </div>
+        </div>
+      </SwiperSlide>
+    ))}
+  </Swiper>
+
+  {/* Fixed CTA Buttons */}
+  <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-20 flex flex-wrap justify-center gap-4 px-4">
+    {isLoggedIn ? (
+      <>
+        <button
+          onClick={() => navigate("/properties")}
+          className="bg-[#FF8C00] hover:bg-orange-600 text-white px-10 py-4 rounded-full font-black transition-all shadow-xl uppercase text-sm tracking-widest"
+        >
+          Browse Marketplace
+        </button>
+
+        <button
+          onClick={() =>
+            navigate(
+              userRole === "leaser"
+                ? "/realtor-dash"
+                : "/hunter-dash"
+            )
+          }
+          className="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-full font-black transition-all shadow-xl uppercase text-sm tracking-widest"
+        >
+          Go To Dashboard
+        </button>
+      </>
+    ) : (
+      <>
+        <button
+          onClick={() => openSignup("hunter")}
+          className="bg-[#FF8C00] hover:bg-orange-600 text-white px-10 py-4 rounded-full font-black transition-all shadow-xl uppercase text-sm tracking-widest"
+        >
+          Register As Hunter
+        </button>
+
+        <button
+          onClick={() => openSignup("realtor")}
+          className="bg-[#FF8C00] hover:bg-orange-600 text-white px-10 py-4 rounded-full font-black transition-all shadow-xl uppercase text-sm tracking-widest"
+        >
+          Register As Realtor
+        </button>
+      </>
+    )}
+  </div>
+</section>
       {/* ================= HELPING YOU FIND SECTION ================= */}
       <section className="max-w-7xl mx-auto px-6 py-24">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
