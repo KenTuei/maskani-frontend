@@ -21,7 +21,7 @@ const PropertyDetails = () => {
   useEffect(() => {
     const fetchProperty = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/listings/${id}`);
+        const res = await axios.get(`http://127.0.0.1:5000/listings/${id}`);
         setProperty(res.data);
       } catch (err) {
         console.error(err);

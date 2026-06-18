@@ -77,7 +77,7 @@ const Home = () => {
 
     const fetchFeatured = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/listings/");
+        const res = await axios.get("http://127.0.0.1:5000/listings/");
         setFeaturedListings(res.data.slice(0, 3));
       } catch (err) {
         console.error("Error fetching featured listings:", err);

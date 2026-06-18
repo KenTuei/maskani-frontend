@@ -45,7 +45,7 @@ const AdminBookings: React.FC = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          "http://localhost:5000/admin/bookings",
+          "http://127.0.0.1:5000/admin/bookings",
           {
             headers: { Authorization: `Bearer ${token}` },
           },
