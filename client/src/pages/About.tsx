@@ -312,7 +312,7 @@ export default function About() {
               {
                 name: "Karanja",
                 role: "Chief Executive Officer",
-                img: "/mustafa-omar-Zkao_QBEjk8-unsplash.jpg",
+                img: "/mburk4.jpg",
               },
               {
                 name: "Mercy.",

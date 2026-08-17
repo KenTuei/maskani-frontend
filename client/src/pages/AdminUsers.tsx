@@ -20,7 +20,7 @@ const AdminUsers: React.FC = () => {
     const fetchUsers = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("http://localhost:5000/admin/users", {
+        const response = await axios.get("http://127.0.0.1:5000/admin/users", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setUsers(response.data);
@@ -39,7 +39,7 @@ const AdminUsers: React.FC = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.patch(
-        `http://localhost:5000/admin/users/${id}`,
+        `http://127.0.0.1:5000/admin/users/${id}`,
         { approved: approve },
         { headers: { Authorization: `Bearer ${token}` } },
       );
